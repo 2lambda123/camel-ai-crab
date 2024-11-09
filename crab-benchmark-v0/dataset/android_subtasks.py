@@ -22,6 +22,7 @@ from networkx import DiGraph, path_graph
 
 from crab import SubTask, evaluator
 from crab.actions.android_actions import execute_adb
+import lxml.etree
 
 
 def get_xml_etree(env) -> _Element | None:
@@ -29,7 +30,7 @@ def get_xml_etree(env) -> _Element | None:
     if "UI hierchary dumped to: /dev/tty" not in xml_str:
         return None
     xml_str = xml_str.removesuffix("UI hierchary dumped to: /dev/tty")
-    return etree.fromstring(xml_str.encode("utf-8"))
+    return etree.fromstring(xml_str.encode("utf-8"), parser=lxml.etree.XMLParser(resolve_entities=False))
 
 
 @evaluator(env_name="android", local=True)
