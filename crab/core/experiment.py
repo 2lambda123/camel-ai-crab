@@ -135,7 +135,7 @@ class Experiment:
             )
             self.metrics = benchmark_result.evaluation_results
             if benchmark_result.terminated:
-                print("\033[92m" f"Task finished, result: {self.metrics}" "\033[0m")
+                print(f"\033[92mTask finished, result: {self.metrics}\033[0m")
                 self.write_current_log_row(action)
                 self.write_main_csv_row(benchmark_result.info["terminate_reason"])
                 if "exception_detail" in benchmark_result.info:
