@@ -63,8 +63,7 @@ class GraphEvaluator:
     ):
         if self.is_complete():
             raise ValueError(
-                "GraphEvaluator has already completed and "
-                "cannot perform another step."
+                "GraphEvaluator has already completed and cannot perform another step."
             )
         run_evaluators = set()
         evaluators = self.get_next_source_nodes()
